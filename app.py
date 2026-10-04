@@ -1,10 +1,4 @@
-from pathlib import Path
-import shutil, zipfile, textwrap, ast
-
-out = Path("/mnt/data/pcos_render_app")
-out.mkdir(exist_ok=True)
-
-app_code = r'''import warnings
+import warnings
 from pathlib import Path
 
 import joblib
@@ -572,28 +566,3 @@ if predict:
 st.caption(
     "For research/demo use only. This is not a medical diagnosis."
 )
-'''
-
-requirements = """streamlit>=1.40,<2
-pandas>=2.2,<3
-numpy>=1.26,<3
-scikit-learn==1.6.1
-xgboost==3.1.3
-joblib>=1.3,<2
-"""
-
-readme = """# PCOS Prediction - Render
-
-Minimal Streamlit UI for the supplied XGBoost PCOS model.
-
-## Files
-
-- `app.py`
-- `PCOS_XGBoost_Final_Model.joblib`
-- `requirements.txt`
-
-## Render settings
-
-Build Command:
-```bash
-pip install -r requirements.txt
